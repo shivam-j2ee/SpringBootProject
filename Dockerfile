@@ -1,9 +1,5 @@
-FROM maven:3.5.2-jdk-8
+FROM openjdk:11
 
-RUN mkdir -p /app
+ADD target/spring-boot-web-0.0.1-SNAPSHOT.jar spring-docker.jar
 
-COPY . /app
-
-WORKDIR /app
-
-CMD mvn spring-boot:run 
+ENTRYPOINT ["java","-jar","spring-docker.jar"]
